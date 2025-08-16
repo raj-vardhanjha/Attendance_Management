@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Attendance Management System</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .container.active .login-panel {
+      transform: translateX(100%);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .container.active .register-panel {
+      transform: translateX(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+  </style>
+</head>
+
+<body
+  class="flex items-center justify-center min-h-screen bg-gradient-to-r from-indigo-300 from-20% to-indigo-100 to-100% h-screen w-screen">
+
+  <div
+    class="container relative w-[850px] h-[550px] bg-white rounded-[30px] shadow-[0_0_30px_rgba(0,0,0,0.2)] overflow-hidden transition-all duration-700">
+
+    <!-- Login Panel -->
+    <div
+      class="login-panel absolute left-0 top-0 w-1/2 h-full bg-white z-10 p-10 flex flex-col items-center justify-center transition-all duration-700 ease-in-out">
+      <h2 class="text-3xl font-semibold mb-6 flex justify-center items-center gap-2"><svg version="1.0"
+          xmlns="http://www.w3.org/2000/svg" width="40px" height="40px" viewBox="0 0 512.000000 512.000000"
+          preserveAspectRatio="xMidYMid meet">
+
+          <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
+            <path d="M1563 4095 c-172 -39 -276 -153 -313 -343 -16 -79 -7 -297 15 -402
+36 -167 106 -342 182 -457 37 -57 38 -80 6 -151 -20 -43 -56 -61 -267 -132
+-460 -156 -578 -247 -646 -492 -19 -70 -41 -273 -31 -284 2 -2 120 -4 261 -4
+l257 0 23 25 c32 34 155 113 255 162 108 54 272 118 495 192 102 33 200 70
+218 81 l33 21 -19 32 c-94 152 -141 256 -197 427 -128 396 -137 777 -24 1028
+36 81 107 180 160 225 l40 35 -58 22 c-75 29 -293 38 -390 15z" />
+            <path d="M3225 4099 c-22 -5 -59 -16 -82 -25 l-43 -16 59 -59 c149 -149 216
+-342 215 -624 -1 -340 -101 -705 -275 -996 -31 -52 -21 -82 33 -104 24 -10
+126 -46 228 -80 216 -73 362 -131 462 -181 95 -48 239 -137 262 -163 18 -20
+28 -21 279 -21 l260 0 -6 108 c-10 193 -68 335 -176 434 -73 66 -249 151 -475
+228 -273 93 -294 108 -312 217 -5 36 -2 49 30 101 117 194 187 449 187 687 0
+288 -98 437 -323 490 -69 16 -258 19 -323 4z" />
+            <path d="M2388 4040 c-150 -27 -253 -77 -333 -161 -160 -167 -202 -455 -124
+-844 42 -209 138 -454 238 -606 47 -71 48 -73 39 -123 -23 -124 -59 -151 -333
+-242 -559 -186 -733 -289 -843 -501 -67 -129 -102 -272 -117 -481 l-5 -82
+1655 0 1655 0 -5 83 c-15 196 -49 346 -106 459 -110 218 -264 314 -809 502
+-131 46 -259 95 -284 110 -54 32 -82 80 -98 167 -10 58 -10 59 30 122 226 358
+328 906 227 1225 -59 186 -183 303 -380 357 -69 19 -332 29 -407 15z" />
+          </g>
+        </svg>
+        Join</h2>
+      <input type="text" placeholder="Enter Your Name"
+        class="w-full mb-4 px-4 py-3 bg-gray-200 rounded-md outline-none" />
+      <input type="text" placeholder="Enter Event Code"
+        class="w-full mb-4 px-4 py-3 bg-gray-200 rounded-md outline-none" />
+      <button onclick="window.location.href='member.html'" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-md">Join</button>
+    </div>
+
+    <!-- Register Panel -->
+    <div
+      class="register-panel absolute left-0 top-0 w-1/2 h-full bg-white z-10 p-10 flex flex-col items-center justify-center transition-all duration-700 ease-in-out transform translate-x-full opacity-0 pointer-events-none">
+      <h2 class="text-3xl font-semibold mb-6 flex justify-center items-center gap-2"><svg fill="#000000" height="30px"
+          width="30px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 474.565 474.565" xml:space="preserve">
+          <g>
+            <path
+              d="M255.204,102.3c-0.606-11.321-12.176-9.395-23.465-9.395C240.078,95.126,247.967,98.216,255.204,102.3z" />
+            <path d="M134.524,73.928c-43.825,0-63.997,55.471-28.963,83.37c11.943-31.89,35.718-54.788,66.886-63.826
+		C163.921,81.685,150.146,73.928,134.524,73.928z" />
+            <path
+              d="M43.987,148.617c1.786,5.731,4.1,11.229,6.849,16.438L36.44,179.459c-3.866,3.866-3.866,10.141,0,14.015l25.375,25.383
+		c1.848,1.848,4.38,2.888,7.019,2.888c2.61,0,5.125-1.04,7.005-2.888l14.38-14.404c2.158,1.142,4.55,1.842,6.785,2.827
+		c0-0.164-0.016-0.334-0.016-0.498c0-11.771,1.352-22.875,3.759-33.302c-17.362-11.174-28.947-30.57-28.947-52.715
+		c0-34.592,28.139-62.739,62.723-62.739c23.418,0,43.637,13.037,54.43,32.084c11.523-1.429,22.347-1.429,35.376,1.033
+		c-1.676-5.07-3.648-10.032-6.118-14.683l14.396-14.411c1.878-1.856,2.918-4.38,2.918-7.004c0-2.625-1.04-5.148-2.918-7.004
+		l-25.361-25.367c-1.94-1.941-4.472-2.904-7.003-2.904c-2.532,0-5.063,0.963-6.989,2.904l-14.442,14.411
+		c-5.217-2.764-10.699-5.078-16.444-6.825V9.9c0-5.466-4.411-9.9-9.893-9.9h-35.888c-5.451,0-9.909,4.434-9.909,9.9v20.359
+		c-5.73,1.747-11.213,4.061-16.446,6.825L75.839,22.689c-1.942-1.941-4.473-2.904-7.005-2.904c-2.531,0-5.077,0.963-7.003,2.896
+		L36.44,48.048c-1.848,1.864-2.888,4.379-2.888,7.012c0,2.632,1.04,5.148,2.888,7.004l14.396,14.403
+		c-2.75,5.218-5.063,10.708-6.817,16.438H23.675c-5.482,0-9.909,4.441-9.909,9.915v35.889c0,5.458,4.427,9.908,9.909,9.908H43.987z" />
+            <path d="M354.871,340.654c15.872-8.705,26.773-25.367,26.773-44.703c0-28.217-22.967-51.168-51.184-51.168
+		c-9.923,0-19.118,2.966-26.975,7.873c-4.705,18.728-12.113,36.642-21.803,52.202C309.152,310.022,334.357,322.531,354.871,340.654z
+		" />
+            <path d="M460.782,276.588c0-5.909-4.799-10.693-10.685-10.693H428.14c-1.896-6.189-4.411-12.121-7.393-17.75l15.544-15.544
+		c2.02-2.004,3.137-4.721,3.137-7.555c0-2.835-1.118-5.553-3.137-7.563l-27.363-27.371c-2.08-2.09-4.829-3.138-7.561-3.138
+		c-2.734,0-5.467,1.048-7.547,3.138l-15.576,15.552c-5.623-2.982-11.539-5.481-17.751-7.369v-21.958
+		c0-5.901-4.768-10.685-10.669-10.685H311.11c-2.594,0-4.877,1.04-6.739,2.578c3.26,11.895,5.046,24.793,5.046,38.552
+		c0,8.735-0.682,17.604-1.956,26.423c7.205-2.656,14.876-4.324,22.999-4.324c36.99,0,67.086,30.089,67.086,67.07
+		c0,23.637-12.345,44.353-30.872,56.303c13.48,14.784,24.195,32.324,31.168,51.976c1.148,0.396,2.344,0.684,3.54,0.684
+		c2.733,0,5.467-1.04,7.563-3.13l27.379-27.371c2.004-2.004,3.106-4.721,3.106-7.555s-1.102-5.551-3.106-7.563l-15.576-15.552
+		c2.982-5.621,5.497-11.555,7.393-17.75h21.957c2.826,0,5.575-1.118,7.563-3.138c2.004-1.996,3.138-4.72,3.138-7.555
+		L460.782,276.588z" />
+            <path d="M376.038,413.906c-16.602-48.848-60.471-82.445-111.113-87.018c-16.958,17.958-37.954,29.351-61.731,29.351
+		c-23.759,0-44.771-11.392-61.713-29.351c-50.672,4.573-94.543,38.17-111.145,87.026l-9.177,27.013
+		c-2.625,7.773-1.368,16.338,3.416,23.007c4.783,6.671,12.486,10.631,20.685,10.631h315.853c8.215,0,15.918-3.96,20.702-10.631
+		c4.767-6.669,6.041-15.234,3.4-23.007L376.038,413.906z" />
+            <path d="M120.842,206.782c0,60.589,36.883,125.603,82.352,125.603c45.487,0,82.368-65.014,82.368-125.603
+		C285.563,81.188,120.842,80.939,120.842,206.782z" />
+          </g>
+        </svg>Login</h2>
+      <input type="text" placeholder="Username" class="w-full mb-4 px-4 py-3 bg-gray-200 rounded-md outline-none" />
+      <!-- Password Input with Static Eye Icon -->
+<div class="relative w-full mb-4">
+  <input
+    id="password"
+    type="password"
+    placeholder="Password"
+    class="w-full px-4 py-3 pr-12 bg-gray-200 rounded-md outline-none"
+  />
+
+  <!-- Static Eye Icon Button -->
+  <button
+    type="button"
+    id="togglePassword"
+    class="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-600"
+  >
+    <!-- Eye Open Icon -->
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="h-5 w-5"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.477 0 8.268 2.943 9.542 7
+        -1.274 4.057-5.065 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+    </svg>
+  </button>
+</div>
+
+
+      <button onclick="window.location.href='admin.html'" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-md">Login</button>
+    </div>
+
+    <!-- Toggle Section -->
+    <div
+      class="absolute right-0 top-0 w-1/2 h-full bg-indigo-600 text-white flex flex-col justify-center items-center p-10 z-20 transition-all duration-700">
+      <div class="text-center mb-8">
+        <h3 class="text-2xl font-bold">Wanna host an Event as Admin?</h3>
+        <p>Click to login.</p>
+      </div>
+      <button
+        class="register-btn mb-4 w-40 h-11 bg-transparent border-2 border-white text-white font-semibold rounded-md hover:bg-white hover:text-blue-500 transition">
+        Login
+      </button>
+
+      <div class="text-center mt-8">
+        <h3 class="text-2xl font-bold">Join as Member in the Event</h3>
+        <p>Click to join.</p>
+      </div>
+      <button
+        class="login-btn mt-4 w-40 h-11 bg-transparent border-2 border-white text-white font-semibold rounded-md hover:bg-white hover:text-blue-500 transition">
+        Join
+      </button>
+    </div>
+
+  </div>
+
+  <script>
+    const container = document.querySelector(".container");
+    const registerBtn = document.querySelector(".register-btn");
+    const loginBtn = document.querySelector(".login-btn");
+
+    registerBtn.addEventListener("click", () => {
+      container.classList.add("active");
+    });
+
+    loginBtn.addEventListener("click", () => {
+      container.classList.remove("active");
+    });
+     const passwordInput = document.getElementById("password");
+  const togglePassword = document.getElementById("togglePassword");
+
+  togglePassword.addEventListener("click", () => {
+    const isHidden = passwordInput.type === "password";
+    passwordInput.type = isHidden ? "text" : "password";
+  });
+  </script>
+</body>
+
+</html>

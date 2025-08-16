@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Attendance Management System</title>
+  <link rel="stylesheet" href="output.css" />
+  <style>
+    html,
+    body {
+      margin: 0;
+      overflow: hidden;
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+</head>
+
+<body class="bg-gradient-to-r from-indigo-300 from-20% to-indigo-100 to-100% h-screen w-screen relative overflow-hidden">
+
+  <!-- Decorative Circles -->
+  <div class="w-10 h-10 bg-blue-700 absolute top-20 left-12 rounded-full opacity-20 animate-bounce"></div>
+  <div class="w-36 h-36 bg-blue-700 absolute top-0 left-[430px] rounded-full -my-[50px] opacity-20 animate-pulse"></div>
+  <div class="w-96 h-96 bg-blue-700 absolute top-[15px] right-0 rounded-full -mx-[120px] opacity-20 animate-pulse"></div>
+  <div class="w-72 h-72 bg-blue-700 absolute bottom-0 left-0 rounded-full -mx-[50px] opacity-20 animate-pulse"></div>
+
+  <!-- Main Content -->
+  <div class="relative z-10 flex flex-col items-center justify-center h-full text-center">
+    <!-- Header -->
+    <h1 class="text-4xl md:text-5xl font-extrabold text-indigo-800 drop-shadow-xl animate-fade-in-down">
+      Manage Events and Secure Attendance with Ease
+    </h1>
+    <h2 class="text-3xl md:text-3xl font-semibold text-indigo-800 drop-shadow-xl animate-fade-in-down mt-15">Manage Attendance for Online and Offline events with ease, Organize and manage events</h2>
+
+    <!-- Get Started Button -->
+    <button onclick="window.location.href='login.html'" class="mt-15 px-8 py-3 bg-indigo-600 text-white rounded-full shadow-lg text-lg font-semibold hover:scale-125 transition duration-300 animate-fade-in-up">
+      Get Started
+    </button>
+
+    <!-- Feature Boxes -->
+    <div class="mt-15 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 px-6 w-full max-w-6xl animate-fade-in-up">
+      <!-- Box 1 -->
+      <div class="bg-red-200 bg-opacity-70 backdrop-blur-md rounded-xl p-6 shadow-md hover:scale-105 transition-transform h-[200px]">
+        <h3 class="text-[25px] font-bold text-indigo-700">QR <br>Attendance</h3>
+        <p class="mt-2 text-gray-700 text-[20px]">Curated QR scan QR codes for physical check-ins.</p>
+      </div>
+
+      <!-- Box 2 -->
+      <div class="bg-purple-200 bg-opacity-70 backdrop-blur-md rounded-xl p-6 shadow-md hover:scale-105 transition-transform h-[200px]">
+        <h3 class="text-[25px] font-bold text-indigo-700">Admin Dashboard</h3>
+        <p class="mt-2 text-gray-700 text-[20px]">Manage events, Co-admins and attendance records.</p>
+      </div>
+
+      <!-- Box 3 -->
+      <div class="bg-amber-100 bg-opacity-70 backdrop-blur-md rounded-xl p-6 shadow-md hover:scale-105 transition-transform h-[200px]">
+        <h3 class="text-[25px] font-bold text-indigo-700">Event <br>Tracking</h3>
+        <p class="mt-2 text-gray-700 text-[20px]">Integrate Zoom, Google Meet or Microsoft Teams.</p>
+      </div>
+
+      <!-- Box 4 -->
+      <div class="bg-green-200 bg-opacity-70 backdrop-blur-md rounded-xl p-6 shadow-md hover:scale-105 transition-transform h-[200px]">
+        <h3 class="text-[25px] font-bold text-indigo-700">Anti-Fraud Measures</h3>
+        <p class="mt-2 text-gray-700 text-[20px]">JWTs, session tokens, and email verification.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tailwind Custom Animations (Optional) -->
+  <style>
+    @keyframes fade-in-down {
+      0% {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fade-in-up {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-fade-in-down {
+      animation: fade-in-down 0.8s ease-out;
+    }
+
+    .animate-fade-in-up {
+      animation: fade-in-up 0.8s ease-out;
+    }
+  </style>
+
+</body>
+</html>
