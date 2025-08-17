@@ -3,18 +3,33 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Attendance Management System</title>
-  <link rel="stylesheet" href="output.css" />
+  <title>Advanced Attendance Management System</title>
+<script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
   <style>
     html, body {
       margin: 0;
       overflow: hidden;
     }
+    /* Particle float animation */
+    @keyframes float {
+      0%   { transform: translateY(100vh) scale(0); opacity: 0; }
+      10%  { transform: translateY(90vh) scale(1); opacity: 1; }
+      90%  { transform: translateY(-10vh) scale(1); opacity: 1; }
+      100% { transform: translateY(-20vh) scale(0); opacity: 0; }
+    }
+    .animate-float {
+      animation: float 6s ease-in-out infinite;
+    }
   </style>
 </head>
 <body class="bg-gradient-to-r from-indigo-300 from-20% to-indigo-100 to-100% h-screen w-screen">
+ 
 
-  <!-- Decorative circles (unchanged) -->
+  <!-- Decorative circles -->
   <div class="w-10 h-10 bg-blue-700 absolute top-20 left-12 rounded-full opacity-20 animate-bounce"></div>
   <div class="w-36 h-36 bg-blue-700 absolute top-0 left-[430px] rounded-full -my-[50px] opacity-20 animate-pulse"></div>
   <div class="w-96 h-96 bg-blue-700 absolute top-[15px] right-0 rounded-full -mx-[120px] opacity-20 animate-pulse"></div>
@@ -23,22 +38,26 @@
   <!-- Container holding sidebar + scrollable content -->
   <div class="absolute top-20 left-[176px] h-[580px] w-[1200px] bg-white rounded-2xl flex">
 
-    <!-- Sidebar - Fixed -->
+    <!-- Sidebar -->
     <div class="w-[200px] bg-gray-200 rounded-tl-2xl rounded-bl-2xl relative shrink-0">
       <!-- Profile -->
       <div class="absolute flex items-center gap-3 left-[24px] top-[30px]">
         <div class="w-12 h-12 rounded-full overflow-hidden border-2 border-gray-400">
-          <img src="Snapchat-303245187~2.jpg" alt="Profile" class="w-full h-full object-cover">
+          <!-- Backend will inject profile picture -->
+          <img id="profile-pic" src="" alt="Profile" class="w-full h-full object-cover">
         </div>
-        <button onclick="loadContent('settings.html')" class="text-black font-medium">Raj Vardhan</button>
+        <!-- Backend will inject name -->
+        <button onclick="loadContent('settings.html')" id="member-name" class="text-black font-medium">
+          <!-- placeholder for name -->
+        </button>
       </div>
 
-      <!-- Sidebar Buttons -->
-    
-
+      <!-- Logout -->
       <button class="absolute flex items-center gap-2 px-4 py-2 bg-gray-200 text-black hover:bg-gray-300 transition top-[520px] left-[42px]">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h6a2 2 0 012 2v1" />
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a2 2 0 01-2 2H5a2 2 0 
+                      01-2-2V7a2 2 0 012-2h6a2 2 0 012 2v1" />
         </svg>
         Logout
       </button>
@@ -47,39 +66,27 @@
     <!-- Scrollable Content Area -->
     <div id="content-area" class="w-[1000px] h-full px-4 py-6 space-y-6">
 
-      <!-- New Box 1: Ongoing Event -->
-<div class="w-full border border-gray-400 rounded-xl p-6 bg-white shadow-md mt-5">
-  <h3 class="text-2xl font-semibold text-gray-800 mb-4">Ongoing Event</h3>
-  <div class="flex justify-between items-center border-t border-gray-200 pt-4">
-    <span class="text-lg font-medium text-gray-700">Event A</span>
-    <button class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-4 py-2 rounded-xl transition duration-200">Join</button>
-  </div>
-</div>
+      <!-- Ongoing Event -->
+      <div class="w-full border border-gray-400 rounded-xl p-6 bg-white shadow-md mt-5">
+        <h3 class="text-2xl font-semibold text-gray-800 mb-4">Ongoing Event</h3>
+        <div class="flex justify-between items-center border-t border-gray-200 pt-4">
+          <!-- Backend injects event name -->
+          <span id="ongoing-event" class="text-lg font-medium text-gray-700"></span>
+          <button id="join-btn" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-4 py-2 rounded-xl transition duration-200">Join</button>
+        </div>
+      </div>
 
-<!-- New Box 2: Past Events -->
-<div class="w-full border border-gray-400 rounded-xl p-6 bg-white shadow-md space-y-4">
-  <h3 class="text-2xl font-semibold text-gray-800">Past Events</h3>
-
-  <div class="border-t border-gray-200 pt-4">
-    <div class="text-lg font-medium text-gray-700">Event B</div>
-    <div class="text-sm text-gray-500">Date: 15 July 2025 | Duration: 2 hrs</div>
-  </div>
-
-  <div class="border-t border-gray-200 pt-4">
-    <div class="text-lg font-medium text-gray-700">Event C</div>
-    <div class="text-sm text-gray-500">Date: 10 July 2025 | Duration: 1.5 hrs</div>
-  </div>
-
-  <div class="border-t border-gray-200 pt-4">
-    <div class="text-lg font-medium text-gray-700">Event D</div>
-    <div class="text-sm text-gray-500">Date: 5 July 2025 | Duration: 3 hrs</div>
-  </div>
-</div>
-
+      <!-- Past Events -->
+      <div class="w-full border border-gray-400 rounded-xl p-6 bg-white shadow-md space-y-4">
+        <h3 class="text-2xl font-semibold text-gray-800">Past Events</h3>
+        <!-- Backend injects past events dynamically here -->
+        <div id="past-events"></div>
+      </div>
 
     </div>
   </div>
-    <script>
+
+  <script>
     function loadContent(page) {
       fetch(page)
         .then(response => {
@@ -97,3 +104,4 @@
   </script>
 </body>
 </html>
+

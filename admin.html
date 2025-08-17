@@ -4,7 +4,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Attendance Management System</title>
+  <title>Advanced Attendance Management System</title>
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
   <style>
     html,
     body {
@@ -16,26 +20,40 @@
 </head>
 
 <body class="bg-gradient-to-r from-indigo-300 from-20% to-indigo-100 to-100% relative h-screen w-screen">
+  
 
   <!-- Curved Circle Decorations -->
   <div class="w-10 h-10 bg-blue-700 absolute top-20 left-12 rounded-full opacity-20 animate-bounce"></div>
   <div class="w-36 h-36 bg-blue-700 absolute top-0 left-[430px] rounded-full -my-[50px] opacity-20 animate-pulse"></div>
-  <div class="w-96 h-96 bg-blue-700 absolute top-[15px] right-0 rounded-full -mx-[120px] opacity-20 animate-pulse">
-  </div>
+  <div class="w-96 h-96 bg-blue-700 absolute top-[15px] right-0 rounded-full -mx-[120px] opacity-20 animate-pulse"></div>
   <div class="w-72 h-72 bg-blue-700 absolute bottom-0 left-0 rounded-full -mx-[50px] opacity-20 animate-pulse"></div>
 
   <!-- Center Card -->
   <div class="h-[580px] w-[1200px] bg-white absolute top-20 left-[176px] rounded-2xl flex">
+
+    <!-- Sidebar -->
     <div class="h-[580px] w-[200px] bg-gray-200 rounded-tl-2xl rounded-bl-2xl relative">
+
+      <!-- Home Button -->
+      <button onclick="location.reload()"
+        class="absolute flex items-center gap-2 px-4 py-2 bg-gray-200 text-black hover:bg-gray-300 transition top-[30px] left-[18px] w-[180px]">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+          fill="currentColor" class="w-6 h-6">
+          <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+        </svg>
+        Home
+      </button>
+
+      <!-- Create Event -->
       <button onclick="loadContent('event.html')"
         class="flex items-center gap-2 px-4 py-2 bg-gray-200 text-black hover:bg-gray-300 transition absolute top-[110px] left-[18px] w-[180px]">
-        <!-- Calendar Plus Icon -->
         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
             d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
         </svg>
         Create Event
       </button>
+
       <!-- Participants -->
       <button onclick="loadContent('participants.html')"
         class="absolute flex items-center gap-2 px-4 py-2 bg-gray-200 text-black hover:bg-gray-300 transition top-[190px] left-[18px] w-[180px]">
@@ -55,101 +73,71 @@
         </svg>
         View Analytics
       </button>
-      <button onclick="location.reload()"
-  class="absolute flex items-center gap-2 px-4 py-2 bg-gray-200 text-black hover:bg-gray-300 transition top-[30px] left-[18px] w-[180px]">
-   <svg xmlns="http://www.w3.org/2000/svg" 
-       viewBox="0 0 24 24" 
-       fill="currentColor" 
-       class="w-6 h-6">
-    <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
-  </svg>
-  Home
-</button>
 
-      <!-- Profile Button -->
+      <!-- Profile Section -->
       <div class="absolute flex items-center gap-3 left-[24px] top-[420px]">
-        <!-- Circular Profile Image -->
         <div class="w-12 h-12 rounded-full overflow-hidden border-2 border-gray-400">
-          <img src="Snapchat-303245187~2.jpg" alt="Profile" class="w-full h-full object-cover">
+          <!-- Backend injects profile pic -->
+          <img id="admin-pic" src="" alt="Profile" class="w-full h-full object-cover">
         </div>
-        <!-- User Name -->
-        <button onclick="loadContent('settings.html')" class="text-black font-medium">Raj Vardhan</button> 
+        <!-- Backend injects name -->
+        <button onclick="loadContent('settings.html')" id="admin-name" class="text-black font-medium"></button>
       </div>
-
 
       <!-- Logout -->
       <button
-        class="absolute flex items-center gap-2 px-4 py-2 bg-gray-200 text-black hover:bg-gray-300 transition top-[520px] left-[42px] ">
+        class="absolute flex items-center gap-2 px-4 py-2 bg-gray-200 text-black hover:bg-gray-300 transition top-[520px] left-[42px]">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
             d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h6a2 2 0 012 2v1" />
         </svg>
         Logout
       </button>
-
     </div>
+
+    <!-- Main Content -->
     <div id="content-area">
-    <div class="absolute top-15 left-[260px] flex gap-24">
-      <div
-        class="bg-pink-200 h-[100px] w-[150px] rounded-xl shadow-md flex justify-center text-[16px] font-semibold pt-5">
-        Total Events</div>
-      <div
-        class="bg-purple-200 h-[100px] w-[150px] rounded-xl shadow-md flex justify-center text-[16px] font-semibold pt-5">
-        Attendance Today</div>
-      <div
-        class="bg-amber-200 h-[100px] w-[150px] rounded-xl shadow-md flex justify-center text-[16px] font-semibold pt-5">
-        Total Participants</div>
-      <div
-        class="bg-green-200 h-[100px] w-[150px] rounded-xl shadow-md flex justify-center text-[16px] font-semibold pt-5">
-        Past Events</div>
-    </div>
 
-    <div class="h-[380px] w-[900px] border border-gray-400 border-b-0 absolute top-50 left-63 rounded-xl overflow-auto">
-      <!-- Header Row -->
-      <div class="grid grid-cols-4 text-xl font-semibold border-b border-gray-400 h-20 px-6 top-0 sticky bg-gray-100">
-        <div class="flex items-center">Event Name</div>
-        <div class="flex items-center">Date</div>
-        <div class="flex items-center">Type</div>
-        <div class="flex items-center">Status</div>
+      <!-- Stats Cards -->
+      <div class="absolute top-15 left-[260px] flex gap-24">
+        <div id="total-events"
+          class="bg-pink-200 h-[100px] w-[150px] rounded-xl shadow-md flex justify-center text-[16px] font-semibold pt-5">
+          Total Events
+        </div>
+        <div id="attendance-today"
+          class="bg-purple-200 h-[100px] w-[150px] rounded-xl shadow-md flex justify-center text-[16px] font-semibold pt-5">
+          Attendance Today
+        </div>
+        <div id="total-participants"
+          class="bg-amber-200 h-[100px] w-[150px] rounded-xl shadow-md flex justify-center text-[16px] font-semibold pt-5">
+          Total Participants
+        </div>
+        <div id="past-events-count"
+          class="bg-green-200 h-[100px] w-[150px] rounded-xl shadow-md flex justify-center text-[16px] font-semibold pt-5">
+          Past Events
+        </div>
       </div>
 
-      <!-- Event Row -->
-      <div class="grid grid-cols-4 text-xl border-b border-gray-300 h-16 px-6">
-        <div class="flex items-center">Event A</div>
-        <div class="flex items-center">24-07-25</div>
-        <div class="flex items-center">Online</div>
-        <div class="flex items-center text-green-500">Active</div>
-      </div>
-      <div class="grid grid-cols-4 text-xl border-b border-gray-300 h-16 px-6">
-        <div class="flex items-center">Event B</div>
-        <div class="flex items-center">24-07-25</div>
-        <div class="flex items-center">Online</div>
-        <div class="flex items-center text-green-500">Active</div>
-      </div>
-      <div class="grid grid-cols-4 text-xl border-b border-gray-300 h-16 px-6">
-        <div class="flex items-center">Event C</div>
-        <div class="flex items-center">25-07-25</div>
-        <div class="flex items-center">Online</div>
-        <div class="flex items-center text-red-500">Inactive</div>
-      </div>
-      <div class="grid grid-cols-4 text-xl border-b border-gray-300 h-16 px-6">
-        <div class="flex items-center">Event D</div>
-        <div class="flex items-center">26-07-25</div>
-        <div class="flex items-center">Offline</div>
-        <div class="flex items-center text-red-500">Inactive</div>
-      </div>
-      <div class="grid grid-cols-4 text-xl border-b border-gray-300 h-16 px-6">
-        <div class="flex items-center">Event E</div>
-        <div class="flex items-center">27-07-25</div>
-        <div class="flex items-center">Offline</div>
-        <div class="flex items-center text-red-500">Inactive</div>
-      </div>
-
-
-    </div>
-    </div>
+      <!-- Events Table -->
+<div class="h-[380px] w-[900px] border border-gray-400 border-b-0 absolute top-50 left-63 rounded-xl overflow-auto">
+  <!-- Header Row -->
+  <div class="grid grid-cols-4 text-xl font-semibold border-b border-gray-400 h-20 px-6 top-0 sticky bg-gray-100">
+    <div class="flex items-center">Event Name</div>
+    <div class="flex items-center">Date</div>
+    <div class="flex items-center">Type</div>
+    <div class="flex items-center">Status</div>
   </div>
 
+  <!-- Event Rows -->
+  <div id="event-rows">
+    <!-- Placeholder when no data -->
+    <div class="h-[300px] flex items-center justify-center text-gray-500 italic">
+      No events available
+    </div>
+  </div>
+</div>
+
+    </div>
   </div>
 
   <script>
@@ -163,13 +151,11 @@
           document.getElementById("content-area").innerHTML = html;
         })
         .catch(error => {
-          document.getElementById("content-area").innerHTML = `<div class="p-4 text-red-500">Failed to load ${page}</div>`;
+          document.getElementById("content-area").innerHTML =
+            `<div class="p-4 text-red-500">Failed to load ${page}</div>`;
           console.error(error);
         });
     }
   </script>
-
-
 </body>
-
 </html>
